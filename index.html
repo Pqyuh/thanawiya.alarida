@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة ثانوية العارضة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>منصة ثانوية العارضة</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showSection('home')" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#" onclick="showSection('announcements')" class="nav-link">الإعلانات</a></li>
+                <li><a href="#" onclick="showSection('achievements')" class="nav-link">الإنجازات</a></li>
+                <li><a href="#" onclick="showSection('resources')" class="nav-link">المصادر</a></li>
+                <li><a href="#" onclick="showSection('study-plans')" class="nav-link">خطط المذاكرة</a></li>
+                <li><a href="#" onclick="showSection('contact')" class="nav-link">التواصل</a></li>
+            </ul>
+            
+            <div class="nav-auth" id="nav-auth">
+                <button class="btn-login" onclick="showLogin()">تسجيل الدخول</button>
+                <button class="btn-register" onclick="showRegister()">التسجيل</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>مرحباً بكم في منصة ثانوية العارضة</h1>
+                    <p>منصة تعليمية شاملة تهدف إلى دعم طلاب المرحلة الثانوية وتطوير قدراتهم الأكاديمية والمهنية</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="showSection('announcements')">تصفح الإعلانات</button>
+                        <button class="btn-secondary" onclick="showSection('achievements')">الإنجازات</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-book-open"></i>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>الإعلانات</h3>
+                    <p>تابع آخر الأخبار والإعلانات المهمة</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>الإنجازات</h3>
+                    <p>اطلع على إنجازات الطلاب المتميزين</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>المصادر</h3>
+                    <p>مكتبة شاملة من المواد التعليمية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>خطط المذاكرة</h3>
+                    <p>خطط دراسية منظمة ومدروسة</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- الإعلانات -->
+        <section id="announcements" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>الإعلانات</h2>
+                    <button id="add-announcement-btn" class="btn-primary" onclick="showAddForm('announcement')" style="display: none;">إضافة إعلان</button>
+                </div>
+                <div class="content-grid" id="announcements-grid">
+                    <!-- سيتم تحميل الإعلانات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- الإنجازات -->
+        <section id="achievements" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>الإنجازات</h2>
+                    <button id="add-achievement-btn" class="btn-primary" onclick="showAddForm('achievement')" style="display: none;">إضافة إنجاز</button>
+                </div>
+                <div class="content-grid" id="achievements-grid">
+                    <!-- سيتم تحميل الإنجازات هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- المصادر -->
+        <section id="resources" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>المصادر التعليمية</h2>
+                    <button id="add-resource-btn" class="btn-primary" onclick="showAddForm('resource')" style="display: none;">إضافة مصدر</button>
+                </div>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterResources('all')">الكل</button>
+                    <button class="filter-btn" onclick="filterResources('pdf')">ملفات PDF</button>
+                    <button class="filter-btn" onclick="filterResources('video')">فيديوهات</button>
+                    <button class="filter-btn" onclick="filterResources('link')">روابط</button>
+                </div>
+                <div class="content-grid" id="resources-grid">
+                    <!-- سيتم تحميل المصادر هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- خطط المذاكرة -->
+        <section id="study-plans" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>خطط المذاكرة</h2>
+                    <button id="add-plan-btn" class="btn-primary" onclick="showAddForm('study-plan')" style="display: none;">إضافة خطة</button>
+                </div>
+                <div class="content-grid" id="study-plans-grid">
+                    <!-- سيتم تحميل خطط المذاكرة هنا -->
+                </div>
+            </div>
+        </section>
+
+        <!-- التواصل -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>التواصل معنا</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>معلومات التواصل</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+966 531477876</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nkhyfybdallh4@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>جازان، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">الاسم</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">الموضوع</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- لوحة التحكم -->
+        <section id="admin" class="section">
+            <div class="container">
+                <h2>لوحة التحكم</h2>
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="showAdminTab('announcements')">الإعلانات</button>
+                    <button class="admin-tab" onclick="showAdminTab('achievements')">الإنجازات</button>
+                    <button class="admin-tab" onclick="showAdminTab('resources')">المصادر</button>
+                    <button class="admin-tab" onclick="showAdminTab('study-plans')">خطط المذاكرة</button>
+                    <button class="admin-tab" onclick="showAdminTab('messages')">الرسائل</button>
+                    <button class="admin-tab" onclick="showAdminTab('users')">المستخدمين</button>
+                </div>
+                <div class="admin-content" id="admin-content">
+                    <!-- محتوى لوحة التحكم -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- النوافذ المنبثقة -->
+    <!-- نافذة تسجيل الدخول -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2>تسجيل الدخول</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">اسم المستخدم</label>
+                    <input type="text" id="login-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">كلمة المرور</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">تسجيل الدخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة التسجيل -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register-modal')">&times;</span>
+            <h2>إنشاء حساب جديد</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-username">اسم المستخدم</label>
+                    <input type="text" id="register-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">البريد الإلكتروني</label>
+                    <input type="email" id="register-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">كلمة المرور</label>
+                    <input type="password" id="register-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">تأكيد كلمة المرور</label>
+                    <input type="password" id="register-confirm-password" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn-primary">إنشاء الحساب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة إضافة/تعديل المحتوى -->
+    <div id="content-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('content-modal')">&times;</span>
+            <h2 id="content-modal-title">إضافة محتوى</h2>
+            <form id="content-form">
+                <div id="content-form-fields">
+                    <!-- سيتم إضافة الحقول ديناميكياً -->
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">حفظ</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('content-modal')">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 منصة ثانوية العارضة. جميع الحقوق محفوظة.</p>
+           <p>تم تطوير وصنع المنصة من قبل الطالب عبدالله حسين حمد نخيفي</p>
+        </div>
+    </footer>
+
+    <!-- رسائل التنبيه -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
